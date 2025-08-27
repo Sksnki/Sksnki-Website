@@ -9,38 +9,38 @@ body {
   margin:0;
   font-family:"Microsoft JhengHei",sans-serif;
   text-align:center;
-  background-color:#0a0a0a;
-  color:#fff;
+  background-color:#000; /* 黑底 */
+  color:#00f0ff;
   overflow-x: hidden;
 }
 
 h1{
   margin:30px 0;
   font-size:2.5em;
-  color:#00f0ff;
-  text-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
+  text-shadow: 0 0 10px #00f0ff, 0 0 20px #00bfff, 0 0 30px #00f0ff;
 }
 
 p{
   font-size:1.2em;
-  color:#cceeff;
+  color:#00bfff;
+  text-shadow: 0 0 5px #00bfff;
 }
 
 button{
   padding:15px 30px;
   border:none;
   border-radius:10px;
-  background: linear-gradient(45deg, #0055ff, #00ffff);
+  background: linear-gradient(45deg, #00bfff, #0055ff);
   color:#fff;
   font-size:1.1em;
   cursor:pointer;
   transition:0.3s;
   margin:15px;
-  box-shadow:0 5px 15px rgba(0,255,255,0.5);
+  box-shadow:0 0 15px #00bfff,0 0 30px #0055ff;
 }
 button:hover{
   transform: scale(1.05);
-  box-shadow:0 8px 20px rgba(0,255,255,0.7);
+  box-shadow:0 0 20px #00bfff,0 0 40px #0055ff;
 }
 
 #about-section, #video-section{ display:none; margin-top:20px; }
@@ -49,27 +49,21 @@ img{
   max-width:90%;
   border-radius:15px;
   margin-top:20px;
-  box-shadow: 0 0 20px #00ffff, 0 0 40px #0055ff;
+  box-shadow: 0 0 20px #00bfff, 0 0 40px #0055ff;
 }
 
 iframe{
   width:100%;
   height:250px;
   border-radius:10px;
-  box-shadow:0 0 20px #00ffff, 0 0 40px #0055ff;
+  box-shadow:0 0 20px #00bfff, 0 0 40px #0055ff;
 }
 
-.clown{
-  position:absolute;
-  width:80px;
-  transition: transform 0.5s;
-  z-index:9999;
-}
-
-footer{
-  margin-top:40px;
-  font-size:0.9em;
-  color: #66ccff;
+.random-text{
+  font-family: monospace;
+  color:#0ff;
+  margin:5px 0;
+  display:block;
 }
 </style>
 </head>
@@ -88,6 +82,7 @@ footer{
 
 <div id="video-section">
   <h2>🎬 影片欣賞</h2>
+  <div id="random-container"></div>
   <iframe id="video" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 </div>
 
@@ -99,24 +94,23 @@ function showAbout(){
 
 function showVideo(){
   document.getElementById("video-section").style.display="block";
-  spawnClowns(5); // 出現 5 張小丑
-  // 重新載入影片以嘗試自動播放
-  const video = document.getElementById("video");
-  video.src += "";
+  generateRandomText(10); // 生成10個亂碼
 }
 
-// 隨機生成小丑圖片
-function spawnClowns(count){
+// 生成亂碼
+function generateRandomText(count){
+  const container = document.getElementById("random-container");
+  container.innerHTML = ""; // 清空之前的
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:',.<>?/~`";
   for(let i=0;i<count;i++){
-    const c=document.createElement("img");
-    c.src="https://i.imgur.com/6f6k6lX.png"; // 嘲諷小丑梗圖片
-    c.className="clown";
-    c.style.top=Math.random()*(window.innerHeight-100)+"px";
-    c.style.left=Math.random()*(window.innerWidth-80)+"px";
-    document.body.appendChild(c);
-    setInterval(()=>{
-      c.style.transform=`translate(${Math.random()*20-10}px,${Math.random()*20-10}px)`;
-    },500);
+    let str = "";
+    for(let j=0;j<12;j++){ // 每個亂碼長度12
+      str += chars.charAt(Math.floor(Math.random()*chars.length));
+    }
+    const span = document.createElement("span");
+    span.className = "random-text";
+    span.textContent = str;
+    container.appendChild(span);
   }
 }
 </script>
