@@ -57,7 +57,7 @@ function subscribed(){
 let intervalId;
 function notSubscribed(){
   if(intervalId) return;
-  intervalId=setInterval(()=>{createRandom();},300);
+  intervalId=setInterval(()=>{createRandom();},100); // 每100ms生成亂碼
 }
 
 function createRandom(){
@@ -75,7 +75,7 @@ function createRandom(){
 
 function fall(el){
   let top=-20;
-  const speed=1+Math.random()*3;
+  const speed=2+Math.random()*5; // 飄落速度加快
   function loop(){
     top+=speed;
     if(top<window.innerHeight){
