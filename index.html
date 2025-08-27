@@ -1,1 +1,103 @@
-<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>魔幻影Sksnki Rick Roll</title><style>body{margin:0;font-family:"Microsoft JhengHei",sans-serif;text-align:center;background-color:#000;color:#00f0ff;overflow:hidden;}h1{margin:30px 0;font-size:2.5em;color:#00f0ff;text-shadow:0 0 10px #00f0ff,0 0 20px #00bfff,0 0 30px #00f0ff;}button{padding:12px 25px;border:none;border-radius:10px;margin:10px;font-size:1em;cursor:pointer;background:linear-gradient(45deg,#00bfff,#0055ff);color:#fff;box-shadow:0 0 15px #00bfff,0 0 30px #0055ff;transition:0.3s;}button:hover{transform:scale(1.05);box-shadow:0 0 20px #00bfff,0 0 40px #0055ff;}.random-text{font-family:monospace;color:#0ff;margin:3px 0;display:block;font-size:1.2em;text-shadow:0 0 5px #00bfff;}iframe{width:90%;max-width:600px;height:340px;border-radius:10px;box-shadow:0 0 20px #00f0ff,0 0 40px #0055ff;margin-top:30px;}.falling{position:absolute;color:#0ff;font-family:monospace;font-size:1em;top:-20px;user-select:none;pointer-events:none;}</style></head><body><h1>魔幻影Sksnki Rick Roll</h1><iframe id="video" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><div id="buttons"><button onclick="subscribed()">已訂閱</button><button onclick="notSubscribed()">未訂閱</button></div><div id="subscription-text"></div><script>function generateSubscriptionText(){const container=document.getElementById("subscription-text");container.innerHTML="";for(let i=0;i<12;i++){const span=document.createElement("span");span.textContent="訂閱魔幻影SKSNKI";span.style.display="block";container.appendChild(span);}}generateSubscriptionText();function subscribed(){window.location.href="https://youtube.com/channel/UC0WCBNyLB9ip8jGmHKoQgNw?si=u9gL1f1-1GwPFK2k";}function notSubscribed(){const chars="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:',.<>?/~`";for(let i=0;i<100;i++){const span=document.createElement("span");span.className="falling";let str="";for(let j=0;j<8;j++){str+=chars.charAt(Math.floor(Math.random()*chars.length));}span.textContent=str;span.style.left=Math.random()*window.innerWidth+"px";span.style.fontSize=(12+Math.random()*20)+"px";document.body.appendChild(span);fall(span);}}function fall(el){let top=-20;const speed=1+Math.random()*3;function loop(){top+=speed;if(top<window.innerHeight){el.style.top=top+"px";requestAnimationFrame(loop);}}loop();}</script></body></html>
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>魔幻影Sksnki介紹</title>
+<style>
+body{margin:0;font-family:"Microsoft JhengHei",sans-serif;text-align:center;background-color:#000;color:#00f0ff;overflow:hidden;}
+h1{margin:20px 0;font-size:2.5em;text-shadow:0 0 10px #00f0ff,0 0 20px #00bfff,0 0 30px #00f0ff;}
+button{padding:12px 25px;border:none;border-radius:10px;margin:10px;font-size:1em;cursor:pointer;background:linear-gradient(45deg,#00bfff,#0055ff);color:#fff;box-shadow:0 0 15px #00bfff,0 0 30px #0055ff;transition:0.3s;}
+button:hover{transform:scale(1.05);box-shadow:0 0 20px #00bfff,0 0 40px #0055ff;}
+.random-text{font-family:monospace;color:#0ff;margin:3px 0;display:block;font-size:1.2em;text-shadow:0 0 5px #00bfff;}
+iframe{width:90%;max-width:600px;height:340px;border-radius:10px;box-shadow:0 0 20px #00f0ff,0 0 40px #0055ff;margin-top:20px;}
+.falling{position:absolute;color:#0ff;font-family:monospace;font-size:1em;top:-20px;user-select:none;pointer-events:none;}
+</style>
+</head>
+<body>
+<h1>魔幻影Sksnki介紹</h1>
+<p>嗨嗨，我是魔幻影Sksnki，是一位台灣的 YouTube。<br>主要拍 ROBLOX，有時候會舉辦抽獎，記得訂閱我！</p>
+
+<button onclick="showAbout()">關於我</button>
+
+<div id="about-section" style="display:none;">
+  <img id="cover" src="https://drive.google.com/uc?export=view&id=1q3jMHRMPkKXMPcdJyN-ztFbgAN2EyVST" alt="魔幻影Sksnki的照片" style="width:90%;max-width:600px;border-radius:10px;margin-top:15px;">
+  <br>
+  <button onclick="showVideo()">欣賞影片</button>
+</div>
+
+<div id="video-section" style="display:none;">
+  <div id="subscription-text"></div>
+  <div id="buttons">
+    <button onclick="subscribed()">已訂閱</button>
+    <button onclick="notSubscribed()">未訂閱</button>
+  </div>
+</div>
+
+<script>
+function showAbout(){
+  document.querySelector("button").style.display="none";
+  document.getElementById("about-section").style.display="block";
+}
+
+function showVideo(){
+  document.getElementById("about-section").style.display="none";
+  const videoSection = document.getElementById("video-section");
+  videoSection.style.display="block";
+
+  // 動態生成 iframe，避免頁面一打開就播放
+  const iframe = document.createElement("iframe");
+  iframe.src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=0";
+  iframe.frameBorder="0";
+  iframe.allow="autoplay; encrypted-media";
+  iframe.allowFullscreen=true;
+  videoSection.insertBefore(iframe, document.getElementById("subscription-text"));
+
+  generateSubscriptionText();
+}
+
+function generateSubscriptionText(){
+  const container=document.getElementById("subscription-text");
+  container.innerHTML="";
+  for(let i=0;i<12;i++){
+    const span=document.createElement("span");
+    span.textContent="訂閱魔幻影SKSNKI";
+    span.className="random-text";
+    container.appendChild(span);
+  }
+}
+
+function subscribed(){
+  window.location.href="https://youtube.com/channel/UC0WCBNyLB9ip8jGmHKoQgNw?si=u9gL1f1-1GwPFK2k";
+}
+
+function notSubscribed(){
+  const chars="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:',.<>?/~`";
+  for(let i=0;i<100;i++){
+    const span=document.createElement("span");
+    span.className="falling";
+    let str="";
+    for(let j=0;j<8;j++){str+=chars.charAt(Math.floor(Math.random()*chars.length));}
+    span.textContent=str;
+    span.style.left=Math.random()*window.innerWidth+"px";
+    span.style.fontSize=(12+Math.random()*20)+"px";
+    document.body.appendChild(span);
+    fall(span);
+  }
+}
+
+function fall(el){
+  let top=-20;
+  const speed=1+Math.random()*3;
+  function loop(){
+    top+=speed;
+    if(top<window.innerHeight){
+      el.style.top=top+"px";
+      requestAnimationFrame(loop);
+    }
+  }
+  loop();
+}
+</script>
+</body>
+</html>
