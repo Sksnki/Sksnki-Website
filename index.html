@@ -16,11 +16,10 @@ iframe{width:90%;max-width:600px;height:340px;border-radius:10px;box-shadow:0 0 
 <body>
 <h1>魔幻影Sksnki介紹</h1>
 <p>嗨嗨，我是魔幻影Sksnki，是一位台灣的 YouTube。<br>主要拍 ROBLOX，有時候會舉辦抽獎，記得訂閱我！</p>
-
 <button onclick="showAbout()">關於我</button>
 
 <div id="about-section" style="display:none;">
-  <img id="cover" src="https://drive.google.com/uc?export=view&id=1q3jMHRMPkKXMPcdJyN-ztFbgAN2EyVST" alt="魔幻影Sksnki的照片" style="width:90%;max-width:600px;border-radius:10px;margin-top:15px;">
+  <img id="cover" src="https://github.com/Sksnki/Sksnki-Website/raw/main/IMG_6226CCFE5FA0-1.jpeg" alt="魔幻影Sksnki的照片" style="width:90%;max-width:600px;border-radius:10px;margin-top:15px;">
   <br>
   <button onclick="showVideo()">欣賞影片</button>
 </div>
@@ -44,7 +43,7 @@ function showVideo(){
   videoSection.style.display="block";
 
   const iframe = document.createElement("iframe");
-  iframe.src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=0";
+  iframe.src="https://www.youtube.com/embed/xnxtU8qU9lo?autoplay=1&mute=0";
   iframe.frameBorder="0";
   iframe.allow="autoplay; encrypted-media";
   iframe.allowFullscreen=true;
@@ -57,8 +56,8 @@ function subscribed(){
 
 let intervalId;
 function notSubscribed(){
-  if(intervalId) return; // 避免多次按下疊加
-  intervalId = setInterval(()=>{createRandom();}, 300); // 每300ms生成亂碼
+  if(intervalId) return;
+  intervalId=setInterval(()=>{createRandom();},300);
 }
 
 function createRandom(){
