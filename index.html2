@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>魔幻影Sksnki介紹網頁</title>
+<style>
+body {
+  margin:0;
+  font-family:"Microsoft JhengHei",sans-serif;
+  text-align:center;
+  background-color:#0a0a0a;
+  color:#fff;
+  overflow-x: hidden;
+}
+
+h1{
+  margin:30px 0;
+  font-size:2.5em;
+  color:#00f0ff;
+  text-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
+}
+
+p{
+  font-size:1.2em;
+  color:#cceeff;
+}
+
+button{
+  padding:15px 30px;
+  border:none;
+  border-radius:10px;
+  background: linear-gradient(45deg, #0055ff, #00ffff);
+  color:#fff;
+  font-size:1.1em;
+  cursor:pointer;
+  transition:0.3s;
+  margin:15px;
+  box-shadow:0 5px 15px rgba(0,255,255,0.5);
+}
+button:hover{
+  transform: scale(1.05);
+  box-shadow:0 8px 20px rgba(0,255,255,0.7);
+}
+
+#about-section, #video-section{ display:none; margin-top:20px; }
+
+img{
+  max-width:90%;
+  border-radius:15px;
+  margin-top:20px;
+  box-shadow: 0 0 20px #00ffff, 0 0 40px #0055ff;
+}
+
+iframe{
+  width:100%;
+  height:250px;
+  border-radius:10px;
+  box-shadow:0 0 20px #00ffff, 0 0 40px #0055ff;
+}
+
+.clown{
+  position:absolute;
+  width:80px;
+  transition: transform 0.5s;
+  z-index:9999;
+}
+
+footer{
+  margin-top:40px;
+  font-size:0.9em;
+  color: #66ccff;
+}
+</style>
+</head>
+<body>
+<h1>🎩 魔幻影Sksnki</h1>
+<p>嗨嗨，我是魔幻影Sksnki，是台灣的 YouTube，主要拍 ROBLOX，有時會舉辦抽獎，記得訂閱我！</p>
+
+<button onclick="showAbout()">關於我</button>
+
+<div id="about-section">
+  <h2>關於我</h2>
+  <img src="https://raw.githubusercontent.com/Sksnki/Sksnki-Website/main/IMG_6226CCFE5FA0-1.jpeg" alt="魔幻影Sksnki的照片">
+  <p>嗨嗨，我是魔幻影Sksnki！喜歡製作搞怪網頁、玩遊戲和創意小驚喜。點擊「欣賞影片」看看我的最愛吧 😆</p>
+  <button onclick="showVideo()">欣賞影片</button>
+</div>
+
+<div id="video-section">
+  <h2>🎬 影片欣賞</h2>
+  <iframe id="video" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>
+
+<script>
+function showAbout(){
+  document.getElementById("about-section").style.display="block";
+  document.getElementById("video-section").style.display="none";
+}
+
+function showVideo(){
+  document.getElementById("video-section").style.display="block";
+  spawnClowns(5); // 出現 5 張小丑
+  // 重新載入影片以嘗試自動播放
+  const video = document.getElementById("video");
+  video.src += "";
+}
+
+// 隨機生成小丑圖片
+function spawnClowns(count){
+  for(let i=0;i<count;i++){
+    const c=document.createElement("img");
+    c.src="https://i.imgur.com/6f6k6lX.png"; // 嘲諷小丑梗圖片
+    c.className="clown";
+    c.style.top=Math.random()*(window.innerHeight-100)+"px";
+    c.style.left=Math.random()*(window.innerWidth-80)+"px";
+    document.body.appendChild(c);
+    setInterval(()=>{
+      c.style.transform=`translate(${Math.random()*20-10}px,${Math.random()*20-10}px)`;
+    },500);
+  }
+}
+</script>
+
+<footer>
+  <p>© 2025 魔幻影Sksnki</p>
+</footer>
+</body>
+</html>
